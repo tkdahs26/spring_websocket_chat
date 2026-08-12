@@ -1,0 +1,228 @@
+/*flex는 부모영역에서 display: flex; 선언하고 자손영역flex1로하면 나눠짐
+flex-direction: row;자식들을  가로 왼쪽 → 오른쪽 로 배치 direction안써잇으면 기본row배치
+flex-direction: column; 자식들을 세로(위 → 아래)로 배치
+
+*/
+
+
+.chatUi {
+    display: flex;
+    height: 90vh;
+    flex-direction: row;
+   /* border: 3px solid red;*/
+}
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ왼쪽ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+.leftBorder {
+    flex: 1;
+    border: 3px solid #FFE4C2;
+    display:flex;
+    flex-direction:column;
+}
+.roomListParent{
+    flex:4;
+    display:flex;
+    flex-direction:column;
+    background-color: #d6e4ef;
+}
+
+h2 {
+    font-size: 30px;
+    text-align: center;
+    font-weight: normal;
+    margin: 25px 0 0 0px;
+    position: relative;
+    top: -15px;
+}
+.roomList{
+    flex: none;
+    align-self: center;
+
+    border: 3px solid #cccccc;
+    padding: 5px 10px;
+
+}
+
+.makeRoomButton {
+    width: 100px;
+    height: 35px;
+
+    display: block;
+    margin: 0 auto;   /* 가로 가운데 */
+}
+
+
+.myProfile{
+    flex:0.5;
+    display:flex;
+    flex-direction: row;
+}
+.profileImageBox {
+    flex:0.3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #cccccc;
+    font-size: 20px;
+}
+.profileImage{
+}
+.profileId{
+    flex:1;
+    border: 3px solid #cccccc;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profileNickName{
+    flex:1;
+    border: 3px solid #cccccc;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ오른쪽ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+.rightBorder {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid #FFE4C2;
+}
+.chatInfomation{
+    flex: 0.1;
+    height: 40px;
+    border: 3px solid #cccccc;
+
+}
+.chatInfomation h5 {
+     font-weight: normal;
+     font-size: 20px;
+     margin: 25px 0 0 25px;
+}
+#userListPopUp {
+    position: absolute;
+    width: 180px;
+    max-height: 250px;
+    overflow-y: auto;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+
+    max-height: 250px;
+    overflow-y: auto; /*스크롤*/
+}
+
+
+ .messageStack{
+     flex: 1;
+     border: 3px solid #cccccc;
+     display:flex;
+     flex-direction:column;
+     gap:10px;
+     overflow-y:auto;   /* 세로 스크롤 */
+     overflow-x:hidden; /* 가로 스크롤 제거 */
+     background-color: #d6e4ef;
+ }
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ날짜구분선ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+.dateDivider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    font-size: 12px;
+}
+
+.dateDivider::before,
+.dateDivider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: #cccccc;
+}
+
+.dateDivider span {
+    margin: 0 10px;
+    padding: 5px 12px;
+    border-radius: 15px;
+    background-color: #eeeeee;
+}
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ날짜구분선ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+
+
+
+
+
+
+
+
+
+
+.myMessage{
+    flex-direction: column;
+    display:flex;
+    justify-content:flex-end;
+    align-items:flex-end;
+    gap:5px;
+
+}
+/* 내 메시지만  색 */
+.myMessage .messageContent{
+    background-color: #d9fdd3;
+}
+
+
+.otherMessage{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+
+}
+
+.senderName{
+    font-size:12px;
+    margin-bottom:3px;
+}
+.otherMessageRow{
+    display:flex;
+    align-items:flex-end;
+    gap:5px;
+}
+.messageContent{
+    display:inline-block;
+    padding:10px;
+    background-color:white;
+    border-radius:8px;
+}
+
+
+.messageTime{
+    font-size:11px;
+}
+
+
+
+#messageForm {
+    display: flex;
+}
+
+#messageInput {
+    flex: 1;
+    height: 40px;
+}
+
+#messageForm button {
+    width: 90px;
+}
+
+
+
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
