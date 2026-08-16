@@ -26,7 +26,6 @@
 
  🛠 Tech Stack  
  <br>
- <br><br>
 ⚙️ Backend
 <br><br>
 Language  :　Java 
