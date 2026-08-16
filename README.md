@@ -77,27 +77,34 @@ Kafka를 이용해 채팅 메시지를 처리하고, Redis를 이용해 채팅�
 ⚙️ Backend
 <br><br>
 Language  :　Java 
+<br>
 Framework  :　Spring Boot · Spring MVC · Spring Data JPA 
+<br>
 Real-Time  :　Spring WebSocket · STOMP 
 <br><br>
 <br>
 🗄 Data 
 <br> <br>
 Database  :　MySQL
+<br>
 Cache / State  :　Redis
+<br>
 Message Broker  :　Apache Kafka
 <br><br>
 <br>
 🐳 Infra
 <br><br>
 Docker 
+<br>
 Docker Compose
 <br><br>
 <br>
 🎨 Frontend
 <br><br>
 Real-Time Client   : STOMP
+<br>
 View   :　JSP · JSTL
+<br>
 Basic   :　HTML5 · CSS3 · JavaScript
 
 
