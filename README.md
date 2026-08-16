@@ -24,29 +24,38 @@
 
 
 
- 🛠 Tech Stack
+ 🛠 Tech Stack  
+ <br>
 ⚙️ Backend
 
-Language　Java
-Framework　Spring Boot · Spring MVC · Spring Data JPA
-Real-Time　Spring WebSocket · STOMP
+Language　Java 
+<br>
+Framework　Spring Boot · Spring MVC · Spring Data JPA 
+<br>
+Real-Time　Spring WebSocket · STOMP 
+<br>
 
-🗄 Data
-
-Database　MySQL
+🗄 Data 
+<br>
+ 
+Database　MySQL   
+<br>
 Cache / State　Redis
+<br>
 Message Broker　Apache Kafka
-
+<br>
 🐳 Infra
-
+<br>
 Docker · Docker Compose
-
+<br>
 🎨 Frontend
-
+<br>
 View　JSP · JSTL
+<br>
 Basic　HTML5 · CSS3 · JavaScript
+<br>
 Real-Time Client　STOMP.js
-
+<br>
 
 
 
