@@ -55,6 +55,44 @@ SimpMessagingTemplate
     │
     └─ STOMP Subscribe를 통해 실시간 메시지 수신
 
+## 실시간 채팅 메시지 처리 흐름
+
+**사용자**  
+│  
+│ STOMP SEND `/app/chat/send`  
+▼  
+**Spring WebSocket Controller**  
+│  
+├─ 로그인 세션에서 `Member` 조회  
+├─ `senderId` 추출  
+├─ `ChatKafkaMessage` DTO 생성  
+│　└─ `roomId`, `senderId`, `messageContent`  
+│  
+▼  
+**Kafka Producer**  
+│  
+├─ `chat-message` Topic으로 메시지 전송  
+│  
+▼  
+**Kafka Consumer**  
+│  
+├─ `roomId`로 채팅방 조회 (JPA)  
+├─ `senderId`로 사용자 조회 (JPA)  
+├─ `ChatMessage` Entity 생성  
+├─ 채팅 메시지 DB 저장 (JPA)  
+└─ 브라우저 전송용 `ChatSocketResponse` DTO 생성  
+│  
+▼  
+**SimpMessagingTemplate**  
+│  
+├─ `/topic/room/{roomId}`로 메시지 발행  
+│  
+▼  
+**채팅방 구독 사용자**  
+│  
+└─ STOMP Subscribe를 통해 실시간 메시지 수신
+
+
 
  🛠 Tech Stack  
  <br>
