@@ -2,7 +2,7 @@
 ## 프로젝트 소개
 
 Spring WebSocket과 STOMP를 기반으로 구현한 실시간 단체 채팅 프로젝트입니다.  
-Docker를 활용해 Kafka와 Redis 실행 환경을 구성하고 Kafka를 이용해 채팅 메시지를 처리하 Redis를 이용해 채팅방 참여자 목록 조회를 관리했습니다.
+Docker를 활용해 Kafka와 Redis 실행 환경을 구성하고 Kafka를 이용해 채팅 메시지를 처리하며 Redis를 이용해 채팅방 참여자 목록 조회를 관리했습니다.
  <br><br>
  <br><br>
 
