@@ -19,8 +19,8 @@
 
 
 
-문제: 페이지 이동 및 요청 처리 과정에서 로그인한 사용자의 ID를 지속적으로 식별하기 어려웠습니다.
-해결: 로그인 성공 시 사용자 정보를 HttpSession에 저장하고, 이후 요청에서 세션의 로그인 정보를 조회하여 사용자를 식별하도록 구현했습니다.
+문제 : 페이지 이동 및 요청 처리 과정에서 로그인한 사용자의 ID를 지속적으로 식별하기 어려웠습니다.
+해결 : 로그인 성공 시 사용자 정보를 HttpSession에 저장하고, 이후 요청에서 세션의 로그인 정보를 조회하여 사용자를 식별하도록 구현했습니다.
 
 
 
@@ -29,20 +29,20 @@
  <br><br>
 ⚙️ Backend
 <br><br>
-Language:　Java 
+Language :　Java 
 <br><br>
-Framework:　Spring Boot · Spring MVC · Spring Data JPA 
+Framework :　Spring Boot · Spring MVC · Spring Data JPA 
 <br><br>
-Real-Time:　Spring WebSocket · STOMP 
+Real-Time :　Spring WebSocket · STOMP 
 <br><br>
 <br>
 🗄 Data 
 <br> <br>
-Database:　MySQL
+Database :　MySQL
 <br><br>
-Cache / State:　Redis
+Cache / State :　Redis
 <br><br>
-Message Broker:　Apache Kafka
+Message Broker :　Apache Kafka
 <br><br>
 <br>
 🐳 Infra
@@ -54,12 +54,11 @@ Docker Compose
 <br>
 🎨 Frontend
 <br><br>
-View　JSP · JSTL
+Real-Time Client  : STOMP.js
 <br><br>
-Basic　HTML5 · CSS3 · JavaScript
+View  :　JSP · JSTL
 <br><br>
-Real-Time Client　STOMP.js
-<br>
+Basic  :　HTML5 · CSS3 · JavaScript
 
 
 
