@@ -22,4 +22,43 @@
 문제: 페이지 이동 및 요청 처리 과정에서 로그인한 사용자의 ID를 지속적으로 식별하기 어려웠습니다.
 해결: 로그인 성공 시 사용자 정보를 HttpSession에 저장하고, 이후 요청에서 세션의 로그인 정보를 조회하여 사용자를 식별하도록 구현했습니다.
 
- 
+
+
+ 🛠 Tech Stack
+⚙️ Backend
+
+Language　Java
+Framework　Spring Boot · Spring MVC · Spring Data JPA
+Real-Time　Spring WebSocket · STOMP
+
+🗄 Data
+
+Database　MySQL
+Cache / State　Redis
+Message Broker　Apache Kafka
+
+🐳 Infra
+
+Docker · Docker Compose
+
+🎨 Frontend
+
+View　JSP · JSTL
+Basic　HTML5 · CSS3 · JavaScript
+Real-Time Client　STOMP.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
