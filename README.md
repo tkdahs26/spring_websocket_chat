@@ -26,36 +26,36 @@
 
  🛠 Tech Stack  
  <br>
- <br>
+ <br><br>
 ⚙️ Backend
-<br>
+<br><br>
 Language　Java 
-<br>
+<br><br>
 Framework　Spring Boot · Spring MVC · Spring Data JPA 
-<br>
+<br><br>
 Real-Time　Spring WebSocket · STOMP 
-<br>
+<br><br>
 <br>
 🗄 Data 
-<br> 
-Database　MySQL   
-<br>
+<br> <br>
+Database　MySQL
+<br><br>
 Cache / State　Redis
-<br>
+<br><br>
 Message Broker　Apache Kafka
-<br>
+<br><br>
 <br>
 🐳 Infra
-<br>
+<br><br>
 Docker · Docker Compose
-<br>
+<br><br>
 <br>
 🎨 Frontend
-<br>
+<br><br>
 View　JSP · JSTL
-<br>
+<br><br>
 Basic　HTML5 · CSS3 · JavaScript
-<br>
+<br><br>
 Real-Time Client　STOMP.js
 <br>
 
