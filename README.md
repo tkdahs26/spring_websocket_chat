@@ -34,7 +34,7 @@ Kafka를 이용해 채팅 메시지를 처리하고, Redis를 이용해 채팅�
  ▼  
 :arrow_down:STOMP SEND `/app/chat/send`  
     <br><br> <br>
-**Spring WebSocket Controller**  
+**Spring WebSocket**  
  ▼  
 :arrow_down: 로그인 세션에서 `Member` 조회  
 :arrow_down: `senderId` 추출  
