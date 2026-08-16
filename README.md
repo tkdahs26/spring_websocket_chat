@@ -26,27 +26,29 @@
 
  🛠 Tech Stack  
  <br>
+ <br>
 ⚙️ Backend
-
+<br>
 Language　Java 
 <br>
 Framework　Spring Boot · Spring MVC · Spring Data JPA 
 <br>
 Real-Time　Spring WebSocket · STOMP 
 <br>
-
-🗄 Data 
 <br>
- 
+🗄 Data 
+<br> 
 Database　MySQL   
 <br>
 Cache / State　Redis
 <br>
 Message Broker　Apache Kafka
 <br>
+<br>
 🐳 Infra
 <br>
 Docker · Docker Compose
+<br>
 <br>
 🎨 Frontend
 <br>
