@@ -22,7 +22,7 @@ Kafka를 이용해 채팅 메시지를 처리하고, Redis를 이용해 채팅�
 ### 채팅방 생성
 
 - 로그인 사용자가 채팅방 이름을 입력하여 새로운 채팅방을 생성할 수 있습니다.
-- `HttpSession`에서 로그인 사용자 정보를 조회하여 채팅방 생성자를 'owner'으로 지정하고, 생성할때 입력한 방 이름,생성자를 `ChatroomRepository`를 통해 MySQL에 저장합니다.
+- `HttpSession`에서 로그인 사용자 정보를 조회하여 채팅방 생성자를 `owner` 으로 지정하고, 생성할때 입력한 방 이름,생성자를 `ChatroomRepository`를 통해 MySQL에 저장합니다.
    <br><br>
  <br><br>
  <br><br>
