@@ -29,25 +29,27 @@
  <br><br>
 ⚙️ Backend
 <br><br>
-Language　Java 
+Language:　Java 
 <br><br>
-Framework　Spring Boot · Spring MVC · Spring Data JPA 
+Framework:　Spring Boot · Spring MVC · Spring Data JPA 
 <br><br>
-Real-Time　Spring WebSocket · STOMP 
+Real-Time:　Spring WebSocket · STOMP 
 <br><br>
 <br>
 🗄 Data 
 <br> <br>
-Database　MySQL
+Database:　MySQL
 <br><br>
-Cache / State　Redis
+Cache / State:　Redis
 <br><br>
-Message Broker　Apache Kafka
+Message Broker:　Apache Kafka
 <br><br>
 <br>
 🐳 Infra
 <br><br>
-Docker · Docker Compose
+Docker 
+<br>
+Docker Compose
 <br><br>
 <br>
 🎨 Frontend
