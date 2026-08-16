@@ -22,6 +22,38 @@
 문제  : 페이지 이동 및 요청 처리 과정에서 로그인한 사용자의 ID를 지속적으로 식별하기 어려웠습니다.
 해결  : 로그인 성공 시 사용자 정보를 HttpSession에 저장하고, 이후 요청에서 세션의 로그인 정보를 조회하여 사용자를 식별하도록 구현했습니다.
 
+사용자
+    │
+    │ STOMP SEND
+    │ /app/chat/send
+    ▼
+Spring WebSocket Controller
+    │
+    ├─ 로그인 세션에서 Member 조회
+    ├─ senderId 추출
+    ├─ ChatKafkaMessage DTO 생성
+    │   (roomId, senderId, messageContent)
+    ▼
+Kafka Producer
+    │
+    │ chat-message Topic으로 메시지 전송
+    ▼
+Kafka Consumer
+    │
+    ├─ roomId로 채팅방 조회 (JPA)
+    ├─ senderId로 사용자 조회 (JPA)
+    ├─ ChatMessage Entity 생성
+    ├─ 채팅 메시지 DB 저장 (JPA)
+    └─ 브라우저 전송용 ChatSocketResponse DTO 생성
+    ▼
+SimpMessagingTemplate
+    │
+    │ /topic/room/{roomId}
+    │ 메시지 발행
+    ▼
+채팅방 구독한 사용자
+    │
+    └─ STOMP Subscribe를 통해 실시간 메시지 수신
 
 
  🛠 Tech Stack  
