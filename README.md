@@ -31,121 +31,6 @@ Docker를 활용해 Kafka와 Redis 실행 환경을 구성하고 Kafka를 이용
 - Kafka를 도입하면 웹소켓이 메세지 수신, 카프카는 DB 저장 및 메시지 전송 처리를 담당하기 때문에 처리 지연 편차를 줄이고 DB 저장 작업 속도가 개선되어서 메세지 처리 지연를 빠르게 할 수 있다고 판단함.<br>
 
 
-
-### 200명의 동시 사용자 총 2,000건의 메시지 부하 테스트 5번 최대 값 측정 
-
-```
-웹소켓
-message_latency................: avg=272.4635 min=67       med=259      max=549      p(90)=444     p(95)=487.2
-messages_received..............: 2000   1030.93182/s
-messages_sent..................: 2000   1030.93182/s
--- DB SAVE RESULTS --
-db_save_count................: 2000
-db_save_duration.............: avg=15.16ms    min=1.74ms    med=12.22ms    max=93.45ms    p(90)=22.06ms    p(95)=29.81ms
-
-카프카
-message_latency................: avg=203.3855 min=57       med=220      max=298      p(90)=273      p(95)=280
-messages_received..............: 2000   4706.505317/s
-messages_sent..................: 2000   4706.505317/s
--- DB SAVE RESULTS --
-db_save_count................: 2000
-db_save_duration.............: avg=1.61ms    min=1.16ms    med=1.49ms    max=56.74ms    p(90)=1.89ms    p(95)=2.29ms
-
-```
-#### 평균 지연 시간      272.46 ms 에서 203.39 ms로 최대 25.4% 감소<br>
-#### p95 지연 시간       487.2ms에서    280ms로 최대 42.5% 감소<br>
-#### 초당 메시지 처리량  1,030건에서    4,706건으로 최대 4.6배 초당 처리량 향상<br>
-#### DB 저장 평균시간    15.16 ms에서   1.61 ms로 최대 89.4% 감소<br>
-#### DB 저장 p95         29.81 ms에서   2.29 ms로 최대 92.3% 감소
-
-<br>
-<br>
-<br>
-<br>
-
-###  메시지 부하 테스트 5번의 전체 평균 값 측정 
-```text 
-웹소켓
-message_latency................: avg=304.90       min=73.20      med=266.20      max=620.40      p(90)=516.60      p(95)=558.66
-messages_received..............: 2000   1319.15/s
-messages_sent..................: 2000   1319.15/s
--- DB SAVE RESULTS --
-db_save_count..................: 2000
-db_save_duration...............: avg=15.97ms    min=1.76ms    med=12.67ms    max=131.10ms    p(90)=22.56ms    p(95)=34.09ms
-
-카프카
-message_latency................: avg=440.72      min=376.60      med=445.10      max=496.40      p(90)=480.60     p(95)=485.01
-messages_received..............: 2000   2079.57/s
-messages_sent..................: 2000   2079.57/s
-
--- DB SAVE RESULTS --
-db_save_count..................: 2000
-db_save_duration...............: avg=1.71ms    min=1.18ms    med=1.55ms    max=53.53ms    p(90)=2.03ms    p(95)=2.55ms
-
-```
-####     웹소켓   카프카 5회 평균값
-#### 평균 지연 시간      304.90ms에서    440.72ms로   44.5% 증가<br>
-#### p95 지연 시간       558.66ms에서    485.01ms로   13.2%감소<br>
-#### 초당 메시지 처리량  1,319건에서     2,079건으로  57.6% 초당 처리량 향상<br>
-#### DB 저장 평균시간    15.97ms에서     1.71ms로     89.3%감소<br>
-#### DB 저장 p95         34.09ms에서     2.55ms로     92.5% 감소
-
-
-#### 결론 : 5회 평균값을 비교한 결과 Kafka 적용 후 메세지 평균 지연 시간은 44.5% 느려졌지만 p95 메시지 지연 시간은  13.2% 조금 더 빨라졌습니다.
-#### 부하 테스트 당 편차가 64.9%에서 32.7%로 감소했으며 초당 메시지 처리량이 약 57.6% 증가하고 DB 저장 평균 시간이 약 89.3% 감소한 것이 큰 격차를 줬습니다. 
-#### 이를 통해 웹소켓을 쓰면 메세지 한 건씩은 빠르게 처리 하겠지만 많은 건을 동시에 처리하는 할 땐 처리량과 DB 저장 부하 측면에서
-#### 작업을 분리 할수록 유리하므로 카프카가 DB 저장 시간, 초당 메시지 처리량은 높은 격차로 우위에 있다는 것을 알 수 있었습니다.
-
-
-
- <br><br>
- <br><br>
- <br><br>
-
-
-## 실시간 채팅 메시지 처리 흐름
-
-**사용자 메세지 입력**  
- ▼  
-:arrow_down:STOMP SEND `/app/chat/send`  
-    <br><br> <br>
-**Spring WebSocket**  
- ▼  
-:arrow_down: 로그인 세션에서 `Member` 조회  
-:arrow_down: `senderId` 추출  
-:arrow_down: `ChatKafkaMessage` DTO 생성 ( `roomId`, `senderId`, `messageContent` )    
-    
- <br>
-
-**Kafka Producer**  
- ▼  
-:arrow_down: `chat-message` Topic으로 메시지 전송      
- 
- <br>
-
- 
-**Kafka Consumer**  
- ▼  
-:arrow_down: `roomId`로 채팅방 조회 (JPA)  
-:arrow_down: `senderId`로 사용자 조회 (JPA)  
-:arrow_down: `ChatMessage` Entity 생성  
-:arrow_down: 채팅 메시지 DB 저장 (JPA)  
-:arrow_down: 브라우저 전송용 `ChatSocketResponse` DTO 생성      
-     
-<br><br>
-**SimpMessagingTemplate**  
- ▼  
-:arrow_down: `/topic/room/{roomId}`로 메시지 발행      
- <br>
-
-**채팅방 구독 사용자**  
-▼  
-:computer:  STOMP Subscribe를 통해 채팅방에 실시간 메시지 수신 
-      
- <br><br>
- <br><br>
- <br><br>
-
 ##   주요 기능 및 구동 화면
 
 사용자 `민수` 에서 본 화면  
@@ -164,8 +49,8 @@ db_save_duration...............: avg=1.71ms    min=1.18ms    med=1.55ms    max=5
  <img width="1917" height="820" alt="test_id2" src="https://github.com/user-attachments/assets/b52a3216-dcbb-4156-9701-6ee4d08ffc61" />
  
 전반적인 주요 기능 및 k6 과부하 테스트할때 사용한 채팅방입니다.
-- WebSocket/STOMP 및 Kafka를 통한 실시간 메시지 처리 , 메시지 DB 저장
-- Redis를 이용한 현재 참여 인원 및 버튼 누를 시 참여자 닉네임 표시
+- WebSocket/STOMP를 통한 실시간 메시지 처리 , 메시지 DB 저장
+- Caffeine를 이용한 현재 참여 인원 및 버튼 누를 시 참여자 닉네임 표시
 - 로그인 사용자와 상대방 메시지의 좌·우 구분 표시
 - 상대방 메세지에 닉네임,보낸 시간표시,   날짜표시줄 표시
 
@@ -187,9 +72,7 @@ Real-Time  :　Spring WebSocket · STOMP
 <br> <br>
 Database  :　MySQL
 <br>
-Cache / State  :　Redis
-<br>
-Message Broker  :　Apache Kafka
+Cache / State  :　Caffeine
 <br><br>
 <br>
 🐳 Infra
