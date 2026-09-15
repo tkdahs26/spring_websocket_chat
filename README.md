@@ -1,5 +1,6 @@
 # spring_websocket_chat
 ## 프로젝트 소개
+https://bsm-portfolio.notion.site/websocket-chat
 
 Spring WebSocket과 STOMP를 기반으로 구현한 실시간 단체 채팅 프로젝트입니다.  
  Caffeine을 이용해 채팅방 참여자 목록 조회를 관리했습니다.
